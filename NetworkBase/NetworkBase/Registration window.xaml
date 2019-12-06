@@ -1,0 +1,28 @@
+﻿<Window x:Name="registrationWindow" x:Class="NetworkBase.Registration_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetworkBase"
+        mc:Ignorable="d"
+        Title="Окно регистрации" Height="383.383" Width="457.754">
+    <Grid>
+        <Label Content="Введите логин:" HorizontalAlignment="Left" Margin="48,43,0,0" VerticalAlignment="Top" FontFamily="/NetworkBase;component/#Roboto"/>
+        <Label Content="Повторите пароль:" HorizontalAlignment="Left" Margin="48,180,0,0" VerticalAlignment="Top" FontFamily="/NetworkBase;component/#Roboto"/>
+        <Label Content="Введите пароль:" HorizontalAlignment="Left" Margin="48,114,0,0" VerticalAlignment="Top" FontFamily="/NetworkBase;component/#Roboto"/>
+        <TextBox x:Name="cancelButton" HorizontalAlignment="Left" Height="23" Margin="48,74,0,0" VerticalAlignment="Top" Width="340"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="48,144,0,0" VerticalAlignment="Top" Width="340" Height="25"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="48,211,0,0" VerticalAlignment="Top" Width="340" Height="25"/>
+        <Button Content="Регистрация" HorizontalAlignment="Left" Margin="48,268,0,0" VerticalAlignment="Top" Width="176" Height="25" FontFamily="/NetworkBase;component/#Roboto">
+            <Button.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="271,268,0,0" VerticalAlignment="Top" Width="117" Height="25" FontFamily="/NetworkBase;component/#Roboto" Click="Button_Click" IsCancel="True">
+            <Button.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>
