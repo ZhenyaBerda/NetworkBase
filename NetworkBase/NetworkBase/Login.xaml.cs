@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,11 +27,13 @@ namespace NetworkBase
 		public login()
 		{
 			InitializeComponent();
-			errorLabel.Content = "";
+			
 		}
 
 		private void EnterButton_Click(object sender, RoutedEventArgs e)
 		{
+			errorLabel.Content = "";
+
 			var users = db.baseUsers;
 
 			if (loginBox.Text.Length > 0) //проверка ввода логина
@@ -42,7 +45,7 @@ namespace NetworkBase
 								select new { user.login };
 
 					if (query.ToList().Count > 0)
-					{
+					{						
 						enter = true;
 						this.Close();
 					}

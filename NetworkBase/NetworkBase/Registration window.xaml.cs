@@ -24,8 +24,40 @@ namespace NetworkBase
 			InitializeComponent();
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		//Регистрация пользователя
+		private void regisButton_Click(object sender, RoutedEventArgs e)
 		{
+			statusLabel.Content = "";
+
+
+			if (loginBox.Text.Length > 0) //проверка ввода логина
+			{
+				if (passwordBox.Password.Length > 0) //проверка ввода пароля
+				{
+					if (passwordRepeat.Password.Length > 0) //проверка повторного ввода пароля
+					{
+						if (passwordRepeat.Password == passwordBox.Password) //проверка совпадения паролей
+						{
+							statusLabel.Foreground = Brushes.LightGreen;
+							statusLabel.Content = "Молодец, возьми с полки пирожок!";
+						}
+						else
+							statusLabel.Content = "Пароли не совпадают";
+					}
+					else
+					statusLabel.Content = "Повторите пароль";
+				}
+				else
+					statusLabel.Content = "Введите пароль";
+			}
+			else
+				statusLabel.Content = "Введите логин";
+		}
+
+		//Добавление данных нового пользователя в бд
+		private void AddUser()
+		{
+			//добавление пользователя в бд
 		}
 	}
 }
