@@ -20,17 +20,19 @@ namespace NetworkBase
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		NetworkBaseEntities db = new NetworkBaseEntities();
+
 		public MainWindow()
 		{
 			InitializeComponent();
-			OpenWindow();
+			OpenLogin();
 		}
 
-
-		void OpenWindow()
+		void OpenLogin()
 		{
-			Login login = new Login();
+			login login = new login();
 			login.ShowDialog();
 		}
+	
 	}
 }

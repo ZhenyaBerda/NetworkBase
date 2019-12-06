@@ -12,7 +12,7 @@
                 <RowDefinition Height="550"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Button x:Name="showButton" Content="Показать" HorizontalAlignment="Left" Margin="176,79,0,0" VerticalAlignment="Top" Width="101" Height="23" />
+            <Button x:Name="showButton" Content="Показать" HorizontalAlignment="Left" Margin="176,79,0,0" VerticalAlignment="Top" Width="101" Height="23"/>
             <Label Content="Таблицы:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="242"/>
             <ComboBox x:Name="tablesBox" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" Width="266" IsEditable="True">
                 <ComboBoxItem Content="idDevice" HorizontalAlignment="Left" Width="264" IsSelected="True"/>
@@ -22,6 +22,7 @@
                 <ComboBoxItem Content="graphicsCard" HorizontalAlignment="Left" Width="264"/>
                 <ComboBoxItem Content="network" HorizontalAlignment="Left" Width="264"/>
             </ComboBox>
+
 
 
         </Grid>

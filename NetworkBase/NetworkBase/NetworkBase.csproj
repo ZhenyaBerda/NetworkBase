@@ -91,8 +91,8 @@
     <Compile Include="idDevice.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
+    <Compile Include="login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
     </Compile>
     <Compile Include="network.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
@@ -103,7 +103,7 @@
     <Compile Include="userInfo.cs">
       <DependentUpon>EntityModel.tt</DependentUpon>
     </Compile>
-    <Page Include="Login.xaml">
+    <Page Include="login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

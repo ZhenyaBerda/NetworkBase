@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -15,18 +16,19 @@ using System.Windows.Shapes;
 namespace NetworkBase
 {
 	/// <summary>
-	/// Логика взаимодействия для Login.xaml
+	/// Логика взаимодействия для login.xaml
 	/// </summary>
-	public partial class Login : Window
+	public partial class login : Window
 	{
 		NetworkBaseEntities db = new NetworkBaseEntities();
+		bool enter=false;
 
-		public Login()
+		public login()
 		{
 			InitializeComponent();
+			errorLabel.Content = "";
 		}
 
-		//Проверка подлинности
 		private void EnterButton_Click(object sender, RoutedEventArgs e)
 		{
 			var users = db.baseUsers;
@@ -41,29 +43,32 @@ namespace NetworkBase
 
 					if (query.ToList().Count > 0)
 					{
-						MessageBox.Show("Добро пожаловать!");
+						enter = true;
 						this.Close();
 					}
 					else
-					{
-						MessageBox.Show("Некорректные данные");
-							
-					}
+						errorLabel.Content ="Некорректные данные";
+
 				}
 				else
-				MessageBox.Show("Введите пароль!");
+					errorLabel.Content = "Введите пароль!";
 			}
 			else
-			MessageBox.Show("Введите логин!");
+				errorLabel.Content = "Введите логин!";
 		}
 
-		private void RegBurron_Click(object sender, RoutedEventArgs e)
+		private void RegButton_Click(object sender, RoutedEventArgs e)
 		{
 			Registration_window regWindow = new Registration_window();
 			regWindow.Owner = this;
 
 			regWindow.ShowDialog();
+		}
 
+		private void LoginWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			if (enter == false)
+				Application.Current.Shutdown();
 		}
 	}
 }
