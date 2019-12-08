@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Drawing;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Security.Principal;
+
 
 namespace NetworkBase
 {
@@ -21,8 +11,9 @@ namespace NetworkBase
 	/// </summary>
 	public partial class login : Window
 	{
-		NetworkBaseEntities db = new NetworkBaseEntities();
+		
 		bool enter=false;
+
 
 		public login()
 		{
@@ -32,7 +23,8 @@ namespace NetworkBase
 
 		private void EnterButton_Click(object sender, RoutedEventArgs e)
 		{
-			errorLabel.Content = "";
+
+			/*errorLabel.Content = "";
 
 			var users = db.baseUsers;
 
@@ -58,6 +50,8 @@ namespace NetworkBase
 			}
 			else
 				errorLabel.Content = "Введите логин!";
+				*/
+
 		}
 
 		private void RegButton_Click(object sender, RoutedEventArgs e)

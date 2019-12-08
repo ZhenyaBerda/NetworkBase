@@ -17,9 +17,7 @@
             <ComboBox x:Name="tablesBox" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" Width="266" IsEditable="True">
                 <ComboBoxItem Content="idDevice" HorizontalAlignment="Left" Width="264" IsSelected="True"/>
                 <ComboBoxItem Content="userInfo" HorizontalAlignment="Left" Width="264"/>
-                <ComboBoxItem Content="deviceUsers" HorizontalAlignment="Left" Width="264"/>
                 <ComboBoxItem Content="features" HorizontalAlignment="Left" Width="264"/>
-                <ComboBoxItem Content="graphicsCard" HorizontalAlignment="Left" Width="264"/>
                 <ComboBoxItem Content="network" HorizontalAlignment="Left" Width="264"/>
             </ComboBox>
 

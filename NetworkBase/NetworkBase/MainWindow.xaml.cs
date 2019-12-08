@@ -20,12 +20,12 @@ namespace NetworkBase
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		NetworkBaseEntities db = new NetworkBaseEntities();
+		Table table;
 
 		public MainWindow()
 		{
 			InitializeComponent();
-			OpenLogin();
+			//OpenLogin();
 		}
 
 		void OpenLogin()
@@ -33,6 +33,15 @@ namespace NetworkBase
 			login login = new login();
 			login.ShowDialog();
 		}
-	
+
+		
+
+		private void ShowButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (tablesBox.SelectedIndex == 0)
+			{
+				table = Table.device;
+			}
+		}
 	}
 }
