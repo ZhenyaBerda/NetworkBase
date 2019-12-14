@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Data.Entity;
 using System.Windows;
+using System.Data.SqlClient;
 using System.Security.Principal;
 
 
@@ -11,7 +13,8 @@ namespace NetworkBase
 	/// </summary>
 	public partial class login : Window
 	{
-		
+
+		NetworkBaseEntities db = new NetworkBaseEntities();
 		bool enter=false;
 
 
@@ -24,25 +27,18 @@ namespace NetworkBase
 		private void EnterButton_Click(object sender, RoutedEventArgs e)
 		{
 
-			/*errorLabel.Content = "";
+			errorLabel.Content = "";
 
-			var users = db.baseUsers;
+			
 
 			if (loginBox.Text.Length > 0) //проверка ввода логина
 			{
 				if (passwordBox.Password.Length > 0) //проверка ввода пароля
 				{
-					var query = from user in users
-								where user.login == loginBox.Text.ToString() && user.password == passwordBox.Password.ToString()
-								select new { user.login };
-
-					if (query.ToList().Count > 0)
-					{						
-						enter = true;
-						this.Close();
-					}
-					else
-						errorLabel.Content ="Некорректные данные";
+					/*
+					string connectionString = 
+					SqlConnection sqlConnection = new SqlConnection();
+					*/
 
 				}
 				else
@@ -50,17 +46,11 @@ namespace NetworkBase
 			}
 			else
 				errorLabel.Content = "Введите логин!";
-				*/
+				
 
 		}
 
-		private void RegButton_Click(object sender, RoutedEventArgs e)
-		{
-			Registration_window regWindow = new Registration_window();
-			regWindow.Owner = this;
-
-			regWindow.ShowDialog();
-		}
+	
 
 		private void LoginWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{

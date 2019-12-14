@@ -9,17 +9,24 @@
     <DockPanel HorizontalAlignment="Left" Height="611" LastChildFill="False" Margin="10,10,0,-1" Width="1020">
         <Grid Height="611" Width="287" HorizontalAlignment="Left"  RenderTransformOrigin="0.462,0.501">
             <Grid.RowDefinitions>
-                <RowDefinition Height="550"></RowDefinition>
+                <RowDefinition Height="443.2"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Button x:Name="showButton" Content="Показать" HorizontalAlignment="Left" Margin="176,79,0,0" VerticalAlignment="Top" Width="101" Height="23"/>
-            <Label Content="Таблицы:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="242"/>
-            <ComboBox x:Name="tablesBox" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" Width="266" IsEditable="True">
-                <ComboBoxItem Content="idDevice" HorizontalAlignment="Left" Width="264" IsSelected="True"/>
-                <ComboBoxItem Content="userInfo" HorizontalAlignment="Left" Width="264"/>
-                <ComboBoxItem Content="features" HorizontalAlignment="Left" Width="264"/>
-                <ComboBoxItem Content="network" HorizontalAlignment="Left" Width="264"/>
+            <Button x:Name="showButton" Content="Показать" HorizontalAlignment="Left" Margin="176,123,0,0" VerticalAlignment="Top" Width="101" Height="23" Click="ShowButton_Click" Background="#FFE5E5E5" FontFamily="Roboto"/>
+            <Label Content="Таблицы:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="242" Height="26"/>
+            <ComboBox x:Name="tablesBox" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" Width="266" IsEditable="True" Height="22">
+                <ComboBoxItem Content="Devices" HorizontalAlignment="Left" Width="264" IsSelected="True"/>
+                <ComboBoxItem Content="Departments" HorizontalAlignment="Left" Width="264"/>
+                <ComboBoxItem Content="Users" HorizontalAlignment="Left" Width="264"/>
+                <ComboBoxItem Content="DeviceNetworks" HorizontalAlignment="Left" Width="264"/>
+                <ComboBoxItem Content="Networks" HorizontalAlignment="Left" Width="264"/>
             </ComboBox>
+            <Label Content="Количество строк:" HorizontalAlignment="Left" Margin="12,72,0,0" VerticalAlignment="Top" Height="26" Width="110"/>
+            <Button x:Name="backupButton" Content="Резервное копирование" HorizontalAlignment="Left" Margin="129,82.8,0,0" VerticalAlignment="Top" Width="148" Height="29" Click="ShowButton_Click" Background="#FFE5E5E5" FontFamily="/NetworkBase;component/#Roboto" Grid.Row="1"/>
+            <TextBox x:Name="sizeBox" HorizontalAlignment="Left" Height="23" Margin="194,31.8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83" IsReadOnly="True"/>
+            <Label Content="Размер резервной копии" HorizontalAlignment="Left" Margin="10,31.8,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="/NetworkBase;component/#Roboto"/>
+            <Button x:Name="sizeButton" Content="Размер" HorizontalAlignment="Left" Margin="12,82.8,0,0" VerticalAlignment="Top" Width="99" Height="29" Click="ShowButton_Click" Background="#FFE5E5E5" FontFamily="/NetworkBase;component/#Roboto" Grid.Row="1"/>
+            <TextBox x:Name="numberBox" HorizontalAlignment="Left" Height="23" Margin="157,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="NumberBox_PreviewTextInput"/>
 
 
 
@@ -32,9 +39,10 @@
             <Button x:Name="ibsertButtn" Content="Вставить" HorizontalAlignment="Left" Margin="418,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25"/>
             <Button x:Name="updateButton" Content="Обновить" HorizontalAlignment="Left" Margin="518,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25"/>
             <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="618,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25"/>
-            <DataGrid x:Name="tablesGrid" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="713"/>
+            <DataGrid x:Name="tablesGrid" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="713" ColumnWidth="*" IsReadOnly="True"/>
 
         </Grid>
+        <Label Content="Label" Height="611.2" VerticalAlignment="Top"/>
     </DockPanel>
 
 </Window>

@@ -6,11 +6,28 @@ using System.Threading.Tasks;
 
 namespace NetworkBase
 {
-	enum Table
+	public enum Table
 	{
 		device = 0,
-		user,
-		feature,
-		network
+		user = 1,
+		department = 2,
+		deviceNateworks = 3,
+		network = 4,
+	}
+
+	public enum Role
+	{
+		admin,
+		editor
+
+	}
+
+	enum NoteNumb
+	{
+		all = 0,
+		five = 5,
+		ten = 10,
+		fifty = 50,
+		onehundred = 100
 	}
 }

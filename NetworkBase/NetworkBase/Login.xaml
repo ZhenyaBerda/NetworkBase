@@ -16,11 +16,6 @@
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
             </Button.Background>
         </Button>
-        <Button x:Name="regButton" Content="Регистрация" HorizontalAlignment="Left" Margin="153,214,0,0" VerticalAlignment="Top" Width="145" Height="25" FontFamily="/NetworkBase;component/#Roboto" Click="RegButton_Click">
-            <Button.Background>
-                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightTextColorKey}}"/>
-            </Button.Background>
-        </Button>
         <Label x:Name="errorLabel" Content="" HorizontalAlignment="Left" Margin="43,169,0,0" VerticalAlignment="Top" FontFamily="/NetworkBase;component/#Roboto" FontWeight="Bold" Foreground="Red" />
 
     </Grid>
