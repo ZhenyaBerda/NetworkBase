@@ -36,7 +36,7 @@
                 <RowDefinition Height="550"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <Button x:Name="ibsertButtn" Content="Вставить" HorizontalAlignment="Left" Margin="418,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25"/>
+            <Button x:Name="insertButtn" Content="Вставить" HorizontalAlignment="Left" Margin="418,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25" Click="InsertButtn_Click"/>
             <Button x:Name="updateButton" Content="Обновить" HorizontalAlignment="Left" Margin="518,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25"/>
             <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="618,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25"/>
             <DataGrid x:Name="tablesGrid" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="713" ColumnWidth="*" IsReadOnly="True"/>

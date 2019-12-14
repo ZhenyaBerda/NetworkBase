@@ -15,6 +15,8 @@ namespace NetworkBase
     public partial class DeviceNetworks
     {
         public int Number { get; set; }
+        public int networkID { get; set; }
+        public int deviceID { get; set; }
     
         public virtual Devices Devices { get; set; }
         public virtual Networks Networks { get; set; }

@@ -18,6 +18,7 @@ namespace NetworkBase
         public string userLogin { get; set; }
         public string userPassword { get; set; }
         public string userAccount { get; set; }
+        public int deviceID { get; set; }
     
         public virtual Devices Devices { get; set; }
     }

@@ -150,6 +150,8 @@
             <PropertyRef Name="Number" />
           </Key>
           <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="networkID" Type="Int32" Nullable="false" />
+          <Property Name="deviceID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Devices" Relationship="Self.FK_DeviceNetworks_deviceID" FromRole="DeviceNetworks" ToRole="Devices" />
           <NavigationProperty Name="Networks" Relationship="Self.FK_DeviceNetworks_networkID" FromRole="DeviceNetworks" ToRole="Networks" />
         </EntityType>
@@ -162,6 +164,7 @@
           <Property Name="deviceType" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="deviceOS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="deviceSNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="departmentID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Departments" Relationship="Self.FK_Devices_departmentID" FromRole="Devices" ToRole="Departments" />
           <NavigationProperty Name="DeviceNetworks" Relationship="Self.FK_DeviceNetworks_deviceID" FromRole="Devices" ToRole="DeviceNetworks" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_deviceID" FromRole="Devices" ToRole="Users" />
@@ -194,23 +197,56 @@
           <Property Name="userLogin" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userPassword" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="userAccount" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="deviceID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Devices" Relationship="Self.FK_Users_deviceID" FromRole="Users" ToRole="Devices" />
         </EntityType>
         <Association Name="FK_Devices_departmentID">
           <End Role="Departments" Type="Self.Departments" Multiplicity="1" />
           <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="departmentID" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="departmentID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_DeviceNetworks_deviceID">
           <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
           <End Role="DeviceNetworks" Type="Self.DeviceNetworks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="deviceID" />
+            </Principal>
+            <Dependent Role="DeviceNetworks">
+              <PropertyRef Name="deviceID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_DeviceNetworks_networkID">
           <End Role="Networks" Type="Self.Networks" Multiplicity="1" />
           <End Role="DeviceNetworks" Type="Self.DeviceNetworks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Networks">
+              <PropertyRef Name="networkID" />
+            </Principal>
+            <Dependent Role="DeviceNetworks">
+              <PropertyRef Name="networkID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="FK_Users_deviceID">
           <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="deviceID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="deviceID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <EntityContainer Name="NetworkBaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departments" EntityType="Self.Departments" />
@@ -254,6 +290,8 @@
             <EntityTypeMapping TypeName="NetworkBaseModel.DeviceNetworks">
               <MappingFragment StoreEntitySet="DeviceNetworks">
                 <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="networkID" ColumnName="networkID" />
+                <ScalarProperty Name="deviceID" ColumnName="deviceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -265,6 +303,7 @@
                 <ScalarProperty Name="deviceType" ColumnName="deviceType" />
                 <ScalarProperty Name="deviceOS" ColumnName="deviceOS" />
                 <ScalarProperty Name="deviceSNumber" ColumnName="deviceSNumber" />
+                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -296,41 +335,10 @@
                 <ScalarProperty Name="userLogin" ColumnName="userLogin" />
                 <ScalarProperty Name="userPassword" ColumnName="userPassword" />
                 <ScalarProperty Name="userAccount" ColumnName="userAccount" />
+                <ScalarProperty Name="deviceID" ColumnName="deviceID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="FK_Devices_departmentID" TypeName="NetworkBaseModel.FK_Devices_departmentID" StoreEntitySet="Devices">
-            <EndProperty Name="Departments">
-              <ScalarProperty Name="departmentID" ColumnName="departmentID" />
-            </EndProperty>
-            <EndProperty Name="Devices">
-              <ScalarProperty Name="deviceID" ColumnName="deviceID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_DeviceNetworks_deviceID" TypeName="NetworkBaseModel.FK_DeviceNetworks_deviceID" StoreEntitySet="DeviceNetworks">
-            <EndProperty Name="Devices">
-              <ScalarProperty Name="deviceID" ColumnName="deviceID" />
-            </EndProperty>
-            <EndProperty Name="DeviceNetworks">
-              <ScalarProperty Name="Number" ColumnName="Number" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_DeviceNetworks_networkID" TypeName="NetworkBaseModel.FK_DeviceNetworks_networkID" StoreEntitySet="DeviceNetworks">
-            <EndProperty Name="Networks">
-              <ScalarProperty Name="networkID" ColumnName="networkID" />
-            </EndProperty>
-            <EndProperty Name="DeviceNetworks">
-              <ScalarProperty Name="Number" ColumnName="Number" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="FK_Users_deviceID" TypeName="NetworkBaseModel.FK_Users_deviceID" StoreEntitySet="Users">
-            <EndProperty Name="Devices">
-              <ScalarProperty Name="deviceID" ColumnName="deviceID" />
-            </EndProperty>
-            <EndProperty Name="Users">
-              <ScalarProperty Name="userID" ColumnName="userID" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -346,7 +354,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
