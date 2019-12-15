@@ -12,6 +12,8 @@ namespace NetworkBase
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class NetworkBaseEntities : DbContext
     {
@@ -31,5 +33,10 @@ namespace NetworkBase
         public virtual DbSet<Networks> Networks { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+    
+        public virtual int dbo_backup()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("dbo_backup");
+        }
     }
 }

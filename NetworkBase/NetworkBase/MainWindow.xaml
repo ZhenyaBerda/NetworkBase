@@ -22,7 +22,7 @@
                 <ComboBoxItem Content="Networks" HorizontalAlignment="Left" Width="264"/>
             </ComboBox>
             <Label Content="Количество строк:" HorizontalAlignment="Left" Margin="12,72,0,0" VerticalAlignment="Top" Height="26" Width="110"/>
-            <Button x:Name="backupButton" Content="Резервное копирование" HorizontalAlignment="Left" Margin="129,82.8,0,0" VerticalAlignment="Top" Width="148" Height="29" Click="ShowButton_Click" Background="#FFE5E5E5" FontFamily="/NetworkBase;component/#Roboto" Grid.Row="1"/>
+            <Button x:Name="backupButton" Content="Резервное копирование" HorizontalAlignment="Left" Margin="129,82.8,0,0" VerticalAlignment="Top" Width="148" Height="29" Background="#FFE5E5E5" FontFamily="/NetworkBase;component/#Roboto" Grid.Row="1" Click="BackupButton_Click"/>
             <TextBox x:Name="sizeBox" HorizontalAlignment="Left" Height="23" Margin="194,31.8,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83" IsReadOnly="True"/>
             <Label Content="Размер резервной копии" HorizontalAlignment="Left" Margin="10,31.8,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="/NetworkBase;component/#Roboto"/>
             <Button x:Name="sizeButton" Content="Размер" HorizontalAlignment="Left" Margin="12,82.8,0,0" VerticalAlignment="Top" Width="99" Height="29" Click="ShowButton_Click" Background="#FFE5E5E5" FontFamily="/NetworkBase;component/#Roboto" Grid.Row="1"/>

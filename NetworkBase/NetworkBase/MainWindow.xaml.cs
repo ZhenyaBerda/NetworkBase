@@ -25,6 +25,7 @@ namespace NetworkBase
 			InitializeComponent();
 			//OpenLogin();
 			db = new NetworkBaseEntities();
+			selectedTable = Table.device;
 		}
 
 		void OpenLogin()
@@ -200,6 +201,11 @@ namespace NetworkBase
 			if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
 		}
 
+		/// <summary>
+		/// Реулизация Insert
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void InsertButtn_Click(object sender, RoutedEventArgs e)
 		{
 			if (selectedTable == Table.device)
@@ -232,6 +238,23 @@ namespace NetworkBase
 			{
 				NetworksWindow networks = new NetworksWindow(db);
 				networks.ShowDialog();
+			}
+		}
+
+		/// <summary>
+		/// Резервное копирование
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void BackupButton_Click(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, "EXEC dbo_backup");
+			}
+			catch
+			{
+				MessageBox.Show("Ошибка резервного копирования");
 			}
 		}
 	}

@@ -54,7 +54,7 @@ namespace NetworkBase
 				{
 					Users user = new Users();
 
-					user.deviceID = Int32.Parse(userID.Text);
+					user.userID = Int32.Parse(userID.Text);
 					user.userLogin = userLogin.Text;
 					user.userPassword = userPassword.Text;
 					user.userAccount = userAccount.Text;
