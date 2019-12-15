@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace NetworkBase
 {
@@ -18,6 +19,7 @@ namespace NetworkBase
 	{
 		public NetworkBaseEntities db;
 		Table selectedTable = new Table();
+		Table shownTable = new Table();
 
 		public MainWindow()
 		{
@@ -44,31 +46,31 @@ namespace NetworkBase
 		{
 			tablesGrid.ItemsSource = null ;
 
-			if (tablesBox.SelectedIndex == 0)
+			if (selectedTable == Table.device)
 			{
-				selectedTable = Table.device;
+				shownTable = selectedTable;
 				SelectDevices();
 			}
 
-			if (tablesBox.SelectedIndex == 1)
+			if (selectedTable == Table.department)
 			{
-				selectedTable = Table.department;
+				shownTable = selectedTable;
 				SelectDeparments();
 			}
 
-			if (tablesBox.SelectedIndex == 2)
+			if (selectedTable == Table.user)
 			{
-				selectedTable = Table.user;
+				shownTable = selectedTable;
 				SelectUsers();
 			}
-			if (tablesBox.SelectedIndex == 3)
+			if (selectedTable == Table.deviceNateworks)
 			{
-				selectedTable = Table.deviceNateworks;
+				shownTable = selectedTable;
 				SelectDeviceNetworks();
 			}
-			if (tablesBox.SelectedIndex == 4)
+			if (selectedTable == Table.network)
 			{
-				selectedTable = Table.network;
+				shownTable = selectedTable;
 				SelectNetworks();
 			}
 
@@ -257,6 +259,174 @@ namespace NetworkBase
 				MessageBox.Show("Ошибка резервного копирования");
 			}
 		}
+
+		private void TablesBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+		{
+			if (tablesBox.SelectedIndex == 0)
+			{
+				selectedTable = Table.device;
+			}
+
+			if (tablesBox.SelectedIndex == 1)
+			{
+				selectedTable = Table.department;
+			}
+
+			if (tablesBox.SelectedIndex == 2)
+			{
+				selectedTable = Table.user;
+			}
+			if (tablesBox.SelectedIndex == 3)
+			{
+				selectedTable = Table.deviceNateworks;
+			}
+			if (tablesBox.SelectedIndex == 4)
+			{
+				selectedTable = Table.network;
+			}
+
+		}
+
+		/// <summary>
+		/// Реализация Update
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void UpdateButton_Click(object sender, RoutedEventArgs e)
+		{
+
+			
+
+
+		}
+
+		/// <summary>
+		/// Реализация Delete
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void DeleteButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (MessageBox.Show("Вы уверены, что хотите удалить этот элемент?", "Удаление элемента", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+			{
+				if (shownTable == Table.device)
+					DeleteDevice();
+				if (shownTable == Table.department)
+					DeleteDepartment();
+				if (shownTable == Table.user)
+					DeleteUser();
+				if (shownTable == Table.deviceNateworks)
+					DeleteDeviceNetworks();
+				if (shownTable == Table.network)
+					DeleteNetworks();
+			}
+		}
+
+		/// <summary>
+		/// Удаление устройства
+		/// </summary>
+		private void DeleteDevice()
+		{
+			try
+			{
+				Devices device = tablesGrid.SelectedItem as Devices;
+				var dDevice = db.Devices.Where(d => d.deviceID == device.deviceID).FirstOrDefault();
+
+
+				db.Devices.Remove(dDevice);
+				db.SaveChanges();
+			}
+			catch
+			{
+				MessageBox.Show("Ошибка удаления данных из базы");
+			}
+		}
+
+		/// <summary>
+		/// Удаление отдела
+		/// </summary>
+		private void DeleteDepartment()
+		{
+			try
+			{
+				Departments department = tablesGrid.SelectedItem as Departments;
+				var dDepartment = db.Departments.Where(u => u.departmentID == department.departmentID).FirstOrDefault();
+
+
+				db.Departments.Remove(dDepartment);
+				db.SaveChanges();
+			}
+			catch
+			{
+				MessageBox.Show("Ошибка удаления данных из базы");
+			}
+		}
+
+		/// <summary>
+		/// Удаление пользователя
+		/// </summary>
+		private void DeleteUser()
+		{
+			try
+			{
+				Users user = tablesGrid.SelectedItem as Users;
+				var dUser = db.Users.Where(u => u.userID == user.userID).FirstOrDefault();
+
+
+				db.Users.Remove(dUser);
+				db.SaveChanges();
+			}
+			catch
+			{
+				MessageBox.Show("Ошибка удаления данных из базы");
+			}
+		}
+
+
+		/// <summary>
+		/// Удаление сетей устройства
+		/// </summary>
+		private void DeleteDeviceNetworks()
+		{
+			try
+			{
+				DeviceNetworks network = tablesGrid.SelectedItem as DeviceNetworks;
+				var dNetwork = db.DeviceNetworks.Where(n => n.networkID == network.networkID && n.networkID == network.deviceID).FirstOrDefault();
+
+
+				db.DeviceNetworks.Remove(dNetwork);
+				db.SaveChanges();
+			}
+			catch
+			{
+				MessageBox.Show("Ошибка удаления данных из базы");
+			}
+		}
+
+
+		/// <summary>
+		/// Удаление сети
+		/// </summary>
+		private void DeleteNetworks()
+		{
+			try
+			{
+				Networks network = tablesGrid.SelectedItem as Networks;
+				var dNetwork = db.Networks.Where(n => n.networkID == network.networkID).FirstOrDefault();
+
+
+				db.Networks.Remove(dNetwork);
+				db.SaveChanges();
+			}
+			catch
+			{
+				MessageBox.Show("Ошибка удаления данных из базы");
+			}
+		}
+
+
+
+
 	}
 }
 

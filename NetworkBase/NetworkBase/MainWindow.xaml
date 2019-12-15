@@ -14,7 +14,7 @@
             </Grid.RowDefinitions>
             <Button x:Name="showButton" Content="Показать" HorizontalAlignment="Left" Margin="176,123,0,0" VerticalAlignment="Top" Width="101" Height="23" Click="ShowButton_Click" Background="#FFE5E5E5" FontFamily="Roboto"/>
             <Label Content="Таблицы:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="242" Height="26"/>
-            <ComboBox x:Name="tablesBox" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" Width="266" IsEditable="True" Height="22">
+            <ComboBox x:Name="tablesBox" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top" Width="266" IsEditable="True" Height="22" SelectionChanged="TablesBox_SelectionChanged">
                 <ComboBoxItem Content="Devices" HorizontalAlignment="Left" Width="264" IsSelected="True"/>
                 <ComboBoxItem Content="Departments" HorizontalAlignment="Left" Width="264"/>
                 <ComboBoxItem Content="Users" HorizontalAlignment="Left" Width="264"/>
@@ -37,9 +37,9 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Button x:Name="insertButtn" Content="Вставить" HorizontalAlignment="Left" Margin="418,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25" Click="InsertButtn_Click"/>
-            <Button x:Name="updateButton" Content="Обновить" HorizontalAlignment="Left" Margin="518,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25"/>
-            <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="618,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25"/>
-            <DataGrid x:Name="tablesGrid" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="713" ColumnWidth="*" IsReadOnly="True"/>
+            <Button x:Name="updateButton" Content="Обновить" HorizontalAlignment="Left" Margin="518,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25" Click="UpdateButton_Click"/>
+            <Button x:Name="deleteButton" Content="Удалить" HorizontalAlignment="Left" Margin="618,19.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="25" Click="DeleteButton_Click"/>
+            <DataGrid x:Name="tablesGrid" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="713" ColumnWidth="*" IsReadOnly="True" />
 
         </Grid>
         <Label Content="Label" Height="611.2" VerticalAlignment="Top"/>
