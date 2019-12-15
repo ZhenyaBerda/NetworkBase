@@ -265,6 +265,7 @@ namespace NetworkBase
 			try
 			{
 				db.Database.ExecuteSqlCommand(TransactionalBehavior.DoNotEnsureTransaction, "EXEC dbo_backup");
+				backupLabel.Content = "Резервная копия успешно сделана";
 			}
 			catch
 			{
