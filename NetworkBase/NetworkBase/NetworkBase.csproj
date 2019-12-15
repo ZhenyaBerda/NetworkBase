@@ -85,8 +85,14 @@
     <Compile Include="Departments.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="DepartmentWindow.xaml.cs">
+      <DependentUpon>DepartmentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DeviceNetworks.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceNetworksWindow.xaml.cs">
+      <DependentUpon>DeviceNetworksWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Devices.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
@@ -98,31 +104,34 @@
     <Compile Include="login.xaml.cs">
       <DependentUpon>login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NetworkBase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NetworkBase.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="NetworkBase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="NetworkBase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NetworkBase.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Networks.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="Query.cs" />
+    <Compile Include="NetworksWindow.xaml.cs">
+      <DependentUpon>NetworksWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
+    <Compile Include="UsersWindow.xaml.cs">
+      <DependentUpon>UsersWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DepartmentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeviceNetworksWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DevicesWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,8 +152,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NetworksWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UsersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NetworkBase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NetworkBase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NetworkBase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NetworkBase.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

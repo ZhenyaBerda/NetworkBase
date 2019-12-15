@@ -30,12 +30,12 @@ namespace NetworkBase
 
 		private void InsertButton_Click(object sender, RoutedEventArgs e)
 		{
-			Departments department = new Departments();
-
 			if (CheckInput())
 			{
 				try
 				{
+					Departments department = new Departments();
+
 					department.departmentID = Int32.Parse(departmentID.Text);
 					department.departmentName = departmentName.Text;
 

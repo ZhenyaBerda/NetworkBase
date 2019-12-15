@@ -1,0 +1,17 @@
+﻿<Window x:Class="NetworkBase.DeviceNetworksWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NetworkBase"
+        mc:Ignorable="d"
+        Title="DeviceNetworksWindow" Height="267.89" Width="553.866">
+    <Grid>
+        <TextBox x:Name="deviceID" HorizontalAlignment="Left" Height="23" Margin="259,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="252" PreviewTextInput="DeviceID_PreviewTextInput"/>
+        <TextBox x:Name="networkID" HorizontalAlignment="Left" Height="23" Margin="259,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="252" PreviewTextInput="NetworkID_PreviewTextInput"/>
+        <Label Content="ID устройства" HorizontalAlignment="Left" Margin="86,56,0,0" VerticalAlignment="Top"/>
+        <Label Content="ID сети" HorizontalAlignment="Left" Margin="86,110,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="insertButton" Content="Добавить" HorizontalAlignment="Left" Margin="215,177,0,0" VerticalAlignment="Top" Width="130" Height="29" FontFamily="/NetworkBase;component/#Roboto" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="InsertButton_Click"/>
+
+    </Grid>
+</Window>

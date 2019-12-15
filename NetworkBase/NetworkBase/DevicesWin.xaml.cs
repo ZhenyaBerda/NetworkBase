@@ -22,13 +22,13 @@ namespace NetworkBase
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			Devices device = new Devices();
-
 			if (CheckInput())
 			{
 
 				try
 				{
+					Devices device = new Devices();
+
 					device.deviceID = Int32.Parse(deviceID.Text);
 					device.deviceName = deviceName.Text;
 					device.deviceType = deviceType.Text;

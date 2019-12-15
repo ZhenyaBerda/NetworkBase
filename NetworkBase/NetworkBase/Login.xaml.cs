@@ -14,7 +14,6 @@ namespace NetworkBase
 	public partial class login : Window
 	{
 
-		NetworkBaseEntities db = new NetworkBaseEntities();
 		bool enter=false;
 
 

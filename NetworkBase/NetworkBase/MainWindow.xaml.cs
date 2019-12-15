@@ -16,13 +16,15 @@ namespace NetworkBase
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public NetworkBaseEntities db = new NetworkBaseEntities();
+		public NetworkBaseEntities db;
 		Table selectedTable = new Table();
 
 		public MainWindow()
 		{
+
 			InitializeComponent();
 			//OpenLogin();
+			db = new NetworkBaseEntities();
 		}
 
 		void OpenLogin()
@@ -84,8 +86,9 @@ namespace NetworkBase
 
 			if (linesNumber == -1)
 			{
+
 				var query = db.Database.SqlQuery<Devices>("SELECT * FROM Devices");
-				
+
 				tablesGrid.ItemsSource = query.ToList();
 			}
 			else
@@ -203,11 +206,39 @@ namespace NetworkBase
 			{
 				DevicesWin devicesWin = new DevicesWin(db);
 
-				devicesWin.Show();
+				devicesWin.ShowDialog();
+			}
+
+			if (selectedTable == Table.department)
+			{
+				DepartmentWindow department = new DepartmentWindow(db);
+
+				department.ShowDialog();
+			}
+
+			if (selectedTable == Table.user)
+			{
+				UsersWindow usersWindow = new UsersWindow(db);
+				usersWindow.ShowDialog();
+			}
+
+			if (selectedTable == Table.deviceNateworks)
+			{
+				DeviceNetworksWindow deviceNetworks = new DeviceNetworksWindow(db);
+				deviceNetworks.ShowDialog();
+			}
+
+			if (selectedTable == Table.network)
+			{
+				NetworksWindow networks = new NetworksWindow(db);
+				networks.ShowDialog();
 			}
 		}
 	}
 }
+
+
+
 /*query =
 				from device in db.Devices
 				select new
