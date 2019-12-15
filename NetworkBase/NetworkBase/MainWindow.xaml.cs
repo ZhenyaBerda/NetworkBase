@@ -28,6 +28,10 @@ namespace NetworkBase
 			//OpenLogin();
 			db = new NetworkBaseEntities();
 			selectedTable = Table.device;
+			shownTable = Table.nope;
+			insertButtn.IsEnabled = false;
+			updateButton.IsEnabled = false;
+			deleteButton.IsEnabled = false;
 		}
 
 		void OpenLogin()
@@ -44,6 +48,9 @@ namespace NetworkBase
 		/// <param name="e"></param>
 		private void ShowButton_Click(object sender, RoutedEventArgs e)
 		{
+			insertButtn.IsEnabled = true;
+			updateButton.IsEnabled = true;
+			deleteButton.IsEnabled = true;
 			tablesGrid.ItemsSource = null ;
 
 			if (selectedTable == Table.device)
@@ -215,6 +222,7 @@ namespace NetworkBase
 				DevicesWin devicesWin = new DevicesWin(db);
 
 				devicesWin.ShowDialog();
+				SelectDevices();
 			}
 
 			if (selectedTable == Table.department)
@@ -222,24 +230,28 @@ namespace NetworkBase
 				DepartmentWindow department = new DepartmentWindow(db);
 
 				department.ShowDialog();
+				SelectDeparments();
 			}
 
 			if (selectedTable == Table.user)
 			{
 				UsersWindow usersWindow = new UsersWindow(db);
 				usersWindow.ShowDialog();
+				SelectUsers();
 			}
 
 			if (selectedTable == Table.deviceNateworks)
 			{
 				DeviceNetworksWindow deviceNetworks = new DeviceNetworksWindow(db);
 				deviceNetworks.ShowDialog();
+				SelectDeviceNetworks();
 			}
 
 			if (selectedTable == Table.network)
 			{
 				NetworksWindow networks = new NetworksWindow(db);
 				networks.ShowDialog();
+				SelectNetworks();
 			}
 		}
 
@@ -294,8 +306,71 @@ namespace NetworkBase
 		/// <param name="e"></param>
 		private void UpdateButton_Click(object sender, RoutedEventArgs e)
 		{
+			//Устройства
+			if (shownTable == Table.device)
+			{
+				Devices device = tablesGrid.SelectedItem as Devices;
+				var uDevice = db.Devices.Where(d => d.deviceID == device.deviceID).FirstOrDefault();
 
-			
+				DevicesWin window = new DevicesWin(db, uDevice);
+
+				window.ShowDialog();
+
+				SelectDevices();
+			}
+
+			//Отделы
+			if (shownTable == Table.department)
+			{
+				Departments department = tablesGrid.SelectedItem as Departments;
+				var udepartment = db.Departments.Where(d => d.departmentID == department.departmentID).FirstOrDefault();
+
+				DepartmentWindow window = new DepartmentWindow(db, udepartment);
+
+				window.ShowDialog();
+
+				SelectDeparments();
+			}
+
+			//Пользователи
+			if (shownTable == Table.user)
+			{
+				Users user = tablesGrid.SelectedItem as Users;
+				var uUser = db.Users.Where(u => u.userID == user.userID).FirstOrDefault();
+
+				UsersWindow window = new UsersWindow(db, uUser);
+
+				window.ShowDialog();
+
+				SelectUsers();
+			}
+
+			//Сети устройства
+			if (shownTable == Table.deviceNateworks)
+			{
+				DeviceNetworks network = tablesGrid.SelectedItem as DeviceNetworks;
+				var uNetwork = db.DeviceNetworks.Where(n => n.networkID == network.networkID && n.deviceID == network.deviceID).FirstOrDefault();
+
+				DeviceNetworksWindow window = new DeviceNetworksWindow(db, uNetwork);
+
+				window.ShowDialog();
+
+				SelectDeviceNetworks();
+			}
+
+			//Сети
+			if (shownTable == Table.network)
+			{
+				Networks network = tablesGrid.SelectedItem as Networks;
+				var uNetwork = db.Networks.Where(n => n.networkID == network.networkID).FirstOrDefault();
+
+				NetworksWindow window = new NetworksWindow(db, uNetwork);
+
+				window.ShowDialog();
+
+				SelectNetworks();
+			}
+
 
 
 		}
@@ -310,15 +385,30 @@ namespace NetworkBase
 			if (MessageBox.Show("Вы уверены, что хотите удалить этот элемент?", "Удаление элемента", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
 			{
 				if (shownTable == Table.device)
+				{
 					DeleteDevice();
+					SelectDevices();
+				}
 				if (shownTable == Table.department)
+				{
 					DeleteDepartment();
+					SelectDeparments();
+				}
 				if (shownTable == Table.user)
+				{
 					DeleteUser();
+					SelectUsers();
+				}
 				if (shownTable == Table.deviceNateworks)
+				{
 					DeleteDeviceNetworks();
+					SelectDeviceNetworks();	
+				}
 				if (shownTable == Table.network)
+				{
 					DeleteNetworks();
+					SelectNetworks();
+				}
 			}
 		}
 
@@ -391,7 +481,7 @@ namespace NetworkBase
 			try
 			{
 				DeviceNetworks network = tablesGrid.SelectedItem as DeviceNetworks;
-				var dNetwork = db.DeviceNetworks.Where(n => n.networkID == network.networkID && n.networkID == network.deviceID).FirstOrDefault();
+				var dNetwork = db.DeviceNetworks.Where(n => n.networkID == network.networkID && n.deviceID == network.deviceID).FirstOrDefault();
 
 
 				db.DeviceNetworks.Remove(dNetwork);
@@ -423,9 +513,6 @@ namespace NetworkBase
 				MessageBox.Show("Ошибка удаления данных из базы");
 			}
 		}
-
-
-
 
 	}
 }

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity.Migrations;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,11 +17,32 @@ namespace NetworkBase
 	public partial class DeviceNetworksWindow : Window
 	{
 		NetworkBaseEntities entities;
+		DeviceNetworks uNetwork;
 
 		public DeviceNetworksWindow(NetworkBaseEntities db)
 		{
-			entities = db;
 			InitializeComponent();
+			entities = db;
+			insertButton.IsEnabled = true;
+			updateButton.IsEnabled = false;
+		}
+
+		public DeviceNetworksWindow(NetworkBaseEntities db, DeviceNetworks deviceNetworks)
+		{
+			InitializeComponent();
+
+			uNetwork = deviceNetworks;
+			entities = db;
+			insertButton.IsEnabled = false;
+			updateButton.IsEnabled = true;
+			numberBox.IsReadOnly = true;
+			ShowData();
+		}
+
+		private void ShowData()
+		{
+			networkID.Text = uNetwork.networkID.ToString();
+			deviceID.Text = uNetwork.deviceID.ToString();
 		}
 
 		private void DeviceID_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -53,6 +71,7 @@ namespace NetworkBase
 				{
 					DeviceNetworks network = new DeviceNetworks();
 
+					network.Number = Int32.Parse(numberBox.Text);
 					network.deviceID = Int32.Parse(deviceID.Text);
 					network.networkID = Int32.Parse(networkID.Text);
 
@@ -67,6 +86,27 @@ namespace NetworkBase
 				}
 			}
 
+		}
+
+		private void UpdateButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (CheckInput())
+			{
+				try
+				{
+					uNetwork.deviceID = Int32.Parse(deviceID.Text);
+					uNetwork.networkID = Int32.Parse(networkID.Text);					
+
+					entities.DeviceNetworks.AddOrUpdate(uNetwork);
+					entities.SaveChanges();
+
+					this.Close();
+				}
+				catch
+				{
+					MessageBox.Show("Не удалось изменить данные в базе.");
+				}
+			}
 		}
 	}
 }

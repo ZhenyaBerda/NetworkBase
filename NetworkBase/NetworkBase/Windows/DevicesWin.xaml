@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkBase"
         mc:Ignorable="d"
-        Title="Добавление устройства" Height="355.6" Width="457.6">
+        Title="Добавление или узменение устройства" Height="355.6" Width="457.6">
     <Grid>
         <TextBox x:Name="deviceID" HorizontalAlignment="Left" Height="23" Margin="215,48,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178" PreviewTextInput="DeviceID_PreviewTextInput"/>
         <TextBox x:Name="deviceName" HorizontalAlignment="Left" Height="23" Margin="215,76,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178"/>
@@ -20,6 +20,7 @@
         <Label Content="Операционная система" HorizontalAlignment="Left" Margin="60,129,0,0" VerticalAlignment="Top"/>
         <Label Content="Серийный номер" HorizontalAlignment="Left" Margin="60,157,0,0" VerticalAlignment="Top"/>
         <Label Content="ID отдела" HorizontalAlignment="Left" Margin="60,185,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Button" Content="Добавить" HorizontalAlignment="Left" Margin="174,266,0,0" VerticalAlignment="Top" Width="109" Height="28" Click="Button_Click" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+        <Button x:Name="Button" Content="Добавить" HorizontalAlignment="Left" Margin="57,258,0,0" VerticalAlignment="Top" Width="142" Height="28" Click="Button_Click" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"/>
+        <Button x:Name="updateButton" Content="Изменить" HorizontalAlignment="Left" Margin="251,258,0,0" VerticalAlignment="Top" Width="142" Height="28"  Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="UpdateButton_Click"/>
     </Grid>
 </Window>

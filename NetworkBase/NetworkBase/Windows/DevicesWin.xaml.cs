@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Data.Entity.Migrations;
 
 
 namespace NetworkBase
@@ -12,13 +13,38 @@ namespace NetworkBase
     {
 
 		NetworkBaseEntities entities;
+		Devices udevice;
 
         public DevicesWin(NetworkBaseEntities db)
         {
-			entities = db;
-
+			
 			InitializeComponent();
-        }
+			Button.IsEnabled = true;
+			updateButton.IsEnabled = false;
+			entities = db;
+		}
+
+		public DevicesWin(NetworkBaseEntities db, Devices device)
+		{
+			InitializeComponent();
+
+			entities = db;
+			udevice = device;
+			Button.IsEnabled = false;
+			updateButton.IsEnabled = true;
+			deviceID.IsReadOnly = true;
+			ShowData();
+		}
+
+		private void ShowData()
+		{
+			deviceID.Text = udevice.deviceID.ToString();
+			deviceName.Text = udevice.deviceName;
+			deviceType.Text = udevice.deviceType;
+			deviceOS.Text = udevice.deviceOS;
+			deviceSNumber.Text = udevice.deviceSNumber;
+			departmentID.Text = udevice.departmentID.ToString();
+		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
@@ -71,6 +97,30 @@ namespace NetworkBase
 		private void DepartmentID_PreviewTextInput(object sender, TextCompositionEventArgs e)
 		{
 			if (!Char.IsDigit(e.Text, 0)) e.Handled = true;
+		}
+
+		private void UpdateButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (CheckInput())
+			{
+				try
+				{
+					udevice.deviceName = deviceName.Text;
+					udevice.deviceType = deviceType.Text;
+					udevice.deviceOS = deviceOS.Text;
+					udevice.deviceSNumber = deviceSNumber.Text;
+					udevice.departmentID = Int32.Parse(departmentID.Text);
+
+					entities.Devices.AddOrUpdate(udevice);
+					entities.SaveChanges();
+
+					this.Close();
+				}
+				catch
+				{
+					MessageBox.Show("Не удалось изменить данные в базе.");
+				}
+			}
 		}
 	}
 }

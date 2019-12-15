@@ -85,19 +85,19 @@
     <Compile Include="Departments.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="DepartmentWindow.xaml.cs">
+    <Compile Include="Windows\DepartmentWindow.xaml.cs">
       <DependentUpon>DepartmentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DeviceNetworks.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="DeviceNetworksWindow.xaml.cs">
+    <Compile Include="Windows\DeviceNetworksWindow.xaml.cs">
       <DependentUpon>DeviceNetworksWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Devices.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="DevicesWin.xaml.cs">
+    <Compile Include="Windows\DevicesWin.xaml.cs">
       <DependentUpon>DevicesWin.xaml</DependentUpon>
     </Compile>
     <Compile Include="enum.cs" />
@@ -112,7 +112,7 @@
     <Compile Include="Networks.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="NetworksWindow.xaml.cs">
+    <Compile Include="Windows\NetworksWindow.xaml.cs">
       <DependentUpon>NetworksWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
@@ -121,18 +121,18 @@
     <Compile Include="Users.cs">
       <DependentUpon>NetworkBase.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsersWindow.xaml.cs">
+    <Compile Include="Windows\UsersWindow.xaml.cs">
       <DependentUpon>UsersWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="DepartmentWindow.xaml">
+    <Page Include="Windows\DepartmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeviceNetworksWindow.xaml">
+    <Page Include="Windows\DeviceNetworksWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DevicesWin.xaml">
+    <Page Include="Windows\DevicesWin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,11 +152,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NetworksWindow.xaml">
+    <Page Include="Windows\NetworksWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UsersWindow.xaml">
+    <Page Include="Windows\UsersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

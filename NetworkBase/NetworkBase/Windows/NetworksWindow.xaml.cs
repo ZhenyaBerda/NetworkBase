@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity.Migrations;
 
 namespace NetworkBase
 {
@@ -20,12 +21,37 @@ namespace NetworkBase
 	public partial class NetworksWindow : Window
 	{
 		NetworkBaseEntities entities;
+		Networks uNetwork;
 
 		public NetworksWindow(NetworkBaseEntities db)
 		{
 			entities = db;
 
 			InitializeComponent();
+
+			insertButton.IsEnabled = true;
+			updateButton.IsEnabled = false;
+		}
+
+		public NetworksWindow(NetworkBaseEntities db, Networks network)
+		{
+			InitializeComponent();
+
+			uNetwork = network;
+			entities = db;
+			insertButton.IsEnabled = false;
+			updateButton.IsEnabled = true;
+			networkID.IsReadOnly = true;
+			ShowData();
+		}
+
+		private void ShowData()
+		{
+			networkID.Text = uNetwork.networkID.ToString();
+			networkName.Text = uNetwork.networkName;
+			networkPassword.Text = uNetwork.networkPassword;
+			networkIP.Text = uNetwork.networkIP;
+			
 		}
 
 		private void NetworkID_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -68,6 +94,30 @@ namespace NetworkBase
 			}
 			else
 				MessageBox.Show("Не все поля заполнены.");
+		}
+
+		private void UpdateButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (CheckInput())
+			{
+				try
+				{
+					uNetwork.networkName = networkName.Text;
+					uNetwork.networkPassword = networkPassword.Text;
+					uNetwork.networkIP = networkIP.Text;
+
+
+
+					entities.Networks.AddOrUpdate(uNetwork);
+					entities.SaveChanges();
+
+					this.Close();
+				}
+				catch
+				{
+					MessageBox.Show("Не удалось изменить данные в базе.");
+				}
+			}
 		}
 	}
 }

@@ -8,6 +8,7 @@ namespace NetworkBase
 {
 	public enum Table
 	{
+		nope = -1,
 		device = 0,
 		user = 1,
 		department = 2,

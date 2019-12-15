@@ -15,7 +15,8 @@
         <Label Content="Имя сети" HorizontalAlignment="Left" Margin="90,115,0,0" VerticalAlignment="Top"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="90,158,0,0" VerticalAlignment="Top"/>
         <Label Content="IP-адрес сети" HorizontalAlignment="Left" Margin="90,200,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="insertButton" Content="Добавить" HorizontalAlignment="Left" Margin="213,281,0,0" VerticalAlignment="Top" Width="140" Height="28" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="InsertButton_Click"/>
+        <Button x:Name="insertButton" Content="Добавить" HorizontalAlignment="Left" Margin="90,279,0,0" VerticalAlignment="Top" Width="170" Height="28" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="InsertButton_Click"/>
+        <Button x:Name="updateButton" Content="Изменить" HorizontalAlignment="Left" Margin="341,279,0,0" VerticalAlignment="Top" Width="170" Height="28" Background="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" Click="UpdateButton_Click"/>
 
     </Grid>
 </Window>
